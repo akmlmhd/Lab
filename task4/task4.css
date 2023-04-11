@@ -1,0 +1,91 @@
+ body {
+    padding: 0;
+    margin: 0;
+   } 
+.header{
+    background-image: url(img/milkbg.jpg);
+     /* padding-top: 50px;  */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 12%;
+}
+
+.overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* additional styles for the overlay */
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 10px;
+
+}
+.background {
+    background: #dedec8;
+    padding: 4em 0;
+}
+.row{
+    display: flex;
+    justify-content: center;
+}
+.team {
+        color: #5e5e55;
+        text-align: center;
+        display:flex;
+        justify-content: center;
+}
+.team .card-columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;    
+}
+.team .card {
+    background:none;
+    border: none;
+}
+    .team .card-title {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+.background h2{
+    text-align: center;
+}
+.page-footer {
+    background-color:#4d64ae;
+    color:#fff;
+    font-size: .60em;
+    text-align: center;
+    border-top: 0;
+    padding-top: 40px;
+    padding-bottom: 70px;
+}
+@media (max-width: 991.98px) {
+    .team {
+    padding: 0 15px;
+    }
+}
+@media (max-width: 575.98px) {
+    .description {
+    left: 0;
+    padding: 0 15px;
+    position: absolute;
+    top: 10%;
+    transform: none;
+    text-align: center;
+    }
+    .description h1 {
+    font-size: 2em;
+    }
+    .description p {
+    font-size: 1.2rem;
+    }
+    .features {
+    margin: 0;
+    }
+    .team {
+    max-width: 60%;
+    }
+} 
