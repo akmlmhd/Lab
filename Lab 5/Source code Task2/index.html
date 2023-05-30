@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product Data</title>
+    <script>
+        function getProductData() {
+            var selectElement = document.getElementById("itemSelect");
+            var selectedValue = selectElement.value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var jsonData = JSON.parse(xhr.responseText);
+                    displayData(jsonData);
+                }
+            };
+            xhr.open("GET", "getProductByChoice.php?q=" + selectedValue, true);
+            xhr.send();
+        }
+
+        function displayData(jsonData) {
+            var table = document.getElementById("dataTable");
+            table.innerHTML = ""; // Clear previous data
+
+            // Create table header
+            var headerRow = document.createElement("tr");
+            for (var key in jsonData[0]) {
+                var th = document.createElement("th");
+                th.textContent = key;
+                headerRow.appendChild(th);
+            }
+            table.appendChild(headerRow);
+
+            // Create table rows
+            for (var i = 0; i < jsonData.length; i++) {
+                var dataRow = document.createElement("tr");
+                for (var key in jsonData[i]) {
+                    var td = document.createElement("td");
+                    td.textContent = jsonData[i][key];
+                    dataRow.appendChild(td);
+                }
+                table.appendChild(dataRow);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <fieldset>
+        <form>
+            <h1>Product Data</h1>
+            <select id="itemSelect">
+                <option value="Classic Cars">Classic Cars</option>
+                <option value="Motorcycles">Motorcycles</option>
+                <option value="Planes">Planes</option>
+                <option value="Ships">Ships</option>
+                <option value="Trains">Trains</option>
+                <option value="Trucks and Buses">Trucks and Buses</option>
+                <option value="Vintage Cars">Vintage Cars</option>
+            </select>
+            <button onclick="getProductData()">Get Data</button>
+            <table id="dataTable"></table>
+        </form>
+    </fieldset>
+</body>
+
+<footer>
+    <br>&copy;2023 - Muhammad Akmal
+</footer>
+</html>
