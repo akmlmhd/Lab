@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Staff details</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link href="css/navbar-fixed-top.css" rel="stylesheet">
+      <style>
+         body {
+            padding: 20px;
+         }
+
+         h1 {
+            text-align: center;
+            margin-bottom: 20px;
+         }
+
+         ul {
+            list-style-type: none;
+            padding: 0;
+         }
+
+         li {
+            margin-bottom: 10px;
+         }
+
+         a {
+            text-decoration: none;
+            color: #007bff;
+         }
+
+         a:hover {
+            text-decoration: underline;
+         }
+
+         footer {
+            background-color: #f8f8f8;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Profile</a></li>
+                      <li><a href="#">Logout</a></li>
+                    </ul>
+                  </li>
+               </ul>
+            </div><!--/.nav-collapse -->
+         </div>
+      </nav><br><br>
+
+      <h1>Staff Details</h1>
+
+    <p id="employeeNumber"></p>
+    <p id="employeeName"></p>
+    <p id="employeeExtension"></p>
+    <p id="employeeEmail"></p>
+    <p id="employeeOfficeCode"></p>
+    <p id="employeeReportsTo"></p>
+    <p id="employeeJobTitle"></p>
+
+    <script>
+        var employeeNumber = new URLSearchParams(window.location.search).get('id');
+        var staffDetails = JSON.parse(localStorage.getItem('staffDetails'));
+
+        if (staffDetails) {
+            document.getElementById('employeeNumber').textContent = 'Employee Number: ' + staffDetails.employeeNumber;
+            document.getElementById('employeeName').textContent = 'Name: ' + staffDetails.firstName + ' ' + staffDetails.lastName;
+            document.getElementById('employeeExtension').textContent = 'Extension: ' + staffDetails.extension;
+            document.getElementById('employeeEmail').textContent = 'Email: ' + staffDetails.email;
+            document.getElementById('employeeOfficeCode').textContent = 'Office Code: ' + staffDetails.officeCode;
+            document.getElementById('employeeReportsTo').textContent = 'Reports To: ' + (staffDetails.reportsTo || 'N/A');
+            document.getElementById('employeeJobTitle').textContent = 'Job Title: ' + staffDetails.jobTitle;
+        } else {
+            alert('No data associated with the employee number found.');
+        }
+    </script>
+</body>
+
+<footer>
+    &copy; Muhammad Akmal @ 2023
+</footer>
+   </body>
+</html>
